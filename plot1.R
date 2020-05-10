@@ -20,8 +20,10 @@ if (!file.exists(dfile)) {
 }
 
 # Read the files
-NEI <- readRDS("summarySCC_PM25.rds")
-SCC <- readRDS("Source_Classification_Code.rds")
+if(!exists("NEI"))
+        NEI <- readRDS("summarySCC_PM25.rds")
+if(!exists("SCC"))
+        SCC <- readRDS("Source_Classification_Code.rds")
 
 ## STEP 2 CALCULATE TOTAL EMISSIONS FROM PM2.5 IN THE US FROM 1999 TO 2008
 ## -----------------------------------------------------------------------
@@ -31,7 +33,7 @@ tot_emissions <- tapply(NEI$Emissions, NEI$year, sum)
 ## -----------------------------------------------------------------------
 png(file="plot1.png", width=350, height=350)
 barplot(
-     tot_emissions_by_year,
+     tot_emissions,
      xlab = "year",
      ylab = "PM2.5 emissions in tons",
      main = "Total PM2.5 emission from all sources"

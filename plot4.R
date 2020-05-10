@@ -35,14 +35,14 @@ if(!exists("NEI"))
 if(!exists("SCC"))
      SCC <- readRDS("Source_Classification_Code.rds")
 
-## STEP 2 
+## STEP 2 CALCULATE TOTAL EMISSIONS COAL RELATED
 ## -----------------------------------------------------------------------------------------
 coal <- grep("coal", tolower(SCC$Short.Name))
 tot_emissions <- NEI[NEI$SCC %in% SCC[coal,"SCC"],] %>%
      group_by(year) %>%
      summarise(Emissions=sum(Emissions))
 
-## STEP 3 
+## STEP 3 PLOT THE GRAPH
 ## ------------------------------------------------------------------------------------
 png(file="plot4.png", width=500, height=350)
 ggplot(tot_emissions, aes(as.factor(year), Emissions)) + 

@@ -1,6 +1,6 @@
 ##--------------------------------------------------------------------------------------------
 ## Title : Exploratory Data Analysis Course - Course Project 2
-## Script: plot5.R
+## Script: plot6.R
 ## Author: Javier Chang
 ##
 ## Question 6: Compare emissions from motor vehicle sources in Baltimore City with emissions 
@@ -36,7 +36,7 @@ if(!exists("NEI"))
 if(!exists("SCC"))
      SCC <- readRDS("Source_Classification_Code.rds")
 
-## STEP 2 
+## STEP 2 CALCULATES TOTAL EMISSIONS IN BALTIMORE CITY AND LOS ANGELES COUNTY FOR ON-ROAD TYPE
 ## -----------------------------------------------------------------------------------------
 bothcities <- subset(NEI, fips=="24510" | fips=="06037")
 tot_emissions <- bothcities[bothcities$type=="ON-ROAD",] %>%
@@ -46,7 +46,7 @@ tot_emissions$fipsname <-
      tot_emissions$fips %>% gsub("24510", "Baltimore City", .) %>%
      gsub("06037", "Los Angeles County", .)
 
-## STEP 3 
+## STEP 3 PLOT THE GRAPH
 ## ------------------------------------------------------------------------------------
 png(file="plot6.png", width=500, height=350)
 ggplot(tot_emissions, aes(year, Emissions)) + 

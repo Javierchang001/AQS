@@ -7,7 +7,6 @@
 ##             (\color{red}{\verb|fips == "24510"|}fips == "24510") from 1999 to 2008? 
 ##             Use the base plotting system to make a plot answering this question.
 ##--------------------------------------------------------------------------------------------
-
 ## STEP 1 DOWNLOAD DATA AND READ IT
 ## ----------------------------------------------------------------------
 
